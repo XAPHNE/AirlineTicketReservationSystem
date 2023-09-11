@@ -1,5 +1,7 @@
 @extends('layouts.main')
-
+@push('title')
+    <title>Welcome | Airline Ticket Reservation System</title>
+@endpush()
 @section('main-section')
     <main>
         <div class="p-5 mb-4 bg-warning rounded-3">

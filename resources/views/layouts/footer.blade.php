@@ -1,6 +1,6 @@
     <footer class="bg-dark text-white">
         &nbsp;&nbsp;
-        <p class="text-center">Copyright &copy; ATRS 2023. All Rights Reserved</p>
+        <p class="text-center">Copyright &copy; <a href="{{url('/')}}">ATRS</a> &trade; 2022-{{date('Y')}}. All Rights Reserved</p>
         &nbsp;&nbsp;
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
@@ -9,6 +9,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
-</body>
+    </body>
 
-</html>
+    </html>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/about-us', function () {
-    return view('about-us');
+        return view('about-us');
 });
-Route::get('/customer-registration', function () {
-    return view('add-user');
-});
+Route::get('/customer-registration', [CustomerRegistrationController::class, 'addUserForm']);
+Route::post('/customer-registration', [CustomerRegistrationController::class, 'registerUser']);
