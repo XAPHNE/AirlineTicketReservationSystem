@@ -18,6 +18,7 @@
                         <x-input-fields type="text" name="lastName" label="Last Name:" placeholder="Enter your last name"/>
                         <x-input-fields type="email" name="email" label="Email:" placeholder="Enter your email"/>
                         <x-input-fields type="date" name="dob" label="Date of Birth:" placeholder="dd/mm/yyyy"/>
+                        <x-select-lists name="gender" label="Gender:"/>
                         <x-input-fields type="password" name="password" label="Password:" placeholder="Enter your password"/>
                         <x-input-fields type="password" name="password_confirmation" label="Confirm Password:" placeholder="Confirm your password"/>
                         <x-input-fields type="number" name="mobileNumber" label="Mobile Number:" placeholder="Enter your 10 digit mobile number"/>
