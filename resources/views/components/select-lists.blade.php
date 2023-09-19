@@ -2,9 +2,9 @@
     <label for="{{$name}}" class="form-label">{{$label}}</label>
     <select class="form-select" name="{{$name}}" id="{{$name}}">
         <option selected>Select</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
+        <option value="Male">Customer</option>
+        <option value="Female">Employee</option>
+        <option value="Other">Admin</option>
     </select>
 </div>
 

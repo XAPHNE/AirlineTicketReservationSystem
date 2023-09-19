@@ -1,6 +1,6 @@
-@extends('layouts.main')
+@extends('../layouts.main')
 @push('title')
-<title>Customer Registration | Airline Ticket Reservation System</title>
+<title>Employee Registration | Airline Ticket Reservation System</title>
 @endpush()
 @section('main-section')
 <main>
@@ -10,8 +10,8 @@
             <div class="card">
                 <!-- <img class="card-img-top" src="holder.js/100x180/" alt="Customer Registration"> -->
                 <div class="card-body">
-                    <h4 class="card-title text-center">Customer Registration</h4>
-                    <form action="{{url('/')}}/customer-registration" method="post">
+                    <h4 class="card-title text-center">Employee Registration</h4>
+                    <form action="{{route('employee.add-user')}}" method="post">
                         @csrf
                         <x-input-fields type="text" name="name" label="Name:" placeholder="Enter your name" />
                         <x-input-fields type="email" name="email" label="Email:" placeholder="Enter your email" />

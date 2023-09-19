@@ -1,4 +1,4 @@
-    <footer class="bg-dark text-white">
+    <footer class="bg-success text-white">
         &nbsp;&nbsp;
         <p class="text-center">Copyright &copy; <a href="{{url('/')}}">ATRS</a> &trade; 2022-{{date('Y')}}. All Rights Reserved</p>
         &nbsp;&nbsp;

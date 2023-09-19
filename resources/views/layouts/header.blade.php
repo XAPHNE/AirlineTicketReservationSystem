@@ -14,7 +14,7 @@
 
 <body class="bg-secondary">
     <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-md navbar-dark bg-success">
             <div class="container">
                 <a class="navbar-brand" href="{{url('/')}}">ATRS</a>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@
                             <a class="nav-link" href="#">Sign In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/')}}/customer-registration">Register</a>
+                            <a class="nav-link" href="{{route('customer.register')}}">Register</a>
                         </li>
                     </ul>
                 </div>
