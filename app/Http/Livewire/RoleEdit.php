@@ -7,26 +7,37 @@ use Livewire\Component;
 
 class RoleEdit extends Component {
     public $role;
+    public $name; // Remove the "role" prefix
+    public $description; // Remove the "role" prefix
+
+    protected $rules = [
+        'name' => 'required|unique:roles,name', // Validation rule for name
+        'description' => 'nullable', // Validation rule for description
+    ];
+
     public function mount($id) {
         $this->role = Role::find($id);
 
-        // Check if the role exists, and if not, you can handle it accordingly (e.g., redirect to an error page).
         if (!$this->role) {
-            // Handle the case where the role doesn't exist.
-            // You can set an error message or redirect to an error page.
-            abort(404); // Example: Redirect to a 404 error page.
+            abort(404);
         }
+
+        $this->name = $this->role->name;
+        $this->description = $this->role->description;
     }
+
     public function render() {
         return view('livewire.role-edit');
     }
+
     public function updateRole() {
-        $this->validate([
-            'role.name' => 'required|unique:roles,name,' . $this->role->id,
+        $this->validate();
+
+        $this->role->update([
+            'name' => $this->name,
+            'description' => $this->description,
         ]);
 
-        $this->role->save();
-
-        // Redirect or emit an event to indicate the role has been updated
+        session()->flash('message', 'Role updated successfully');
     }
 }

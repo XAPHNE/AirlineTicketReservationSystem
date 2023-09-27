@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile-example', ProfileExample::class)->name('profile-example');
     Route::get('/users', Users::class)->name('users');
     Route::get('/role-management/role-add', RoleAdd::class)->name('role.add');
+    Route::post('/role-management/role-add', RoleAdd::class)->name('role.add');
     Route::get('/role-management/role-edit/{id}', RoleEdit::class)->name('role.edit');
     Route::get('/role-management/role-list', Roles::class)->name('roles');
     Route::get('/login-example', LoginExample::class)->name('login-example');

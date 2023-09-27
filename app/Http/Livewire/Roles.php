@@ -13,15 +13,4 @@ class Roles extends Component {
         $this->roles = Role::all();
         return view('livewire.roles');
     }
-    public function createRole() {
-        $this->validate([
-            'name' => 'required|unique:roles.name',
-        ]);
-        Role::create([
-            'name' => $this->name,
-            'description' => $this->description,
-        ]);
-        $this->name = '';
-        $this->emit('roleCreated');
-    }
 }

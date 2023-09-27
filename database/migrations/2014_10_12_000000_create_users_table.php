@@ -24,9 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('number')->nullable();
             $table->string('city')->nullable();
             $table->string('ZIP')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken()->unique();
             $table->timestamps();
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
