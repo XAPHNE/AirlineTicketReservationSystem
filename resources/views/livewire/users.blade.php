@@ -1,10 +1,10 @@
-<title>Volt Laravel Dashboard - User management</title>
+<title>ATRS Dashboard - User Management</title>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
     <div class="d-block mb-4 mb-md-0">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                 <li class="breadcrumb-item">
-                    <a href="#">
+                    <a href="{{ url('/') }}">
                         <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -13,11 +13,11 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Volt</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Users List</li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">ATRS</a></li>
+                <li class="breadcrumb-item active" aria-current="page">User Management</li>
             </ol>
         </nav>
-        <h2 class="h4">Users List</h2>
+        <h2 class="h4">User Management</h2>
         <p class="mb-0">Your web analytics dashboard template.</p>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -111,10 +111,6 @@
         </div>
     </div>
 </div>
-<div class="alert alert-danger" role="alert">
-    Add, Edit, Delete features are not functional. This is a PRO feature! Click <a
-        href="https://volt-pro-laravel-admin-dashboard.updivision.com/" target="_blank">here</a> to see the PRO product.
-</div>
 <div class="card card-body shadow border-0 table-wrapper table-responsive">
     <div class="d-flex mb-3">
         <select class="form-select fmxw-200" aria-label="Message select example">
@@ -143,52 +139,54 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <div class="form-check dashboard-check">
-                        <input class="form-check-input" type="checkbox" value="" id="userCheck1">
-                        <label class="form-check-label" for="userCheck1">
-                        </label>
-                    </div>
-                </td>
-                <td>
-                    <a href="#" class="d-flex align-items-center">
-                        <img src="../assets/img/team/profile-picture-1.jpg" class="avatar rounded-circle me-3"
-                            alt="Avatar">
-                        <div class="d-block">
-                            <span class="fw-bold">Admin</span>
-                            <div class="small text-gray">admin@volt.com</div>
+            @foreach ($users as $user)
+                <tr>
+                    <td>
+                        <div class="form-check dashboard-check">
+                            <input class="form-check-input" type="checkbox" value="" id="userCheck1">
+                            <label class="form-check-label" for="userCheck1">
+                            </label>
                         </div>
-                    </a>
-                </td>
-                <td><span class="fw-normal">Admin</span></td>
-                <td><span class="fw-normal d-flex align-items-center">15 Jun 2021</span></td>
-                <td><span class="fw-normal text-success">Active</span></td>
-                <td>
-                    <div class="btn-group">
-                        <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                </path>
-                            </svg>
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <span class="fas fa-user-shield me-2"></span>
-                                View Details
-                            </a>
-                            <a class="dropdown-item text-danger d-flex align-items-center" href="#">
-                                <span class="fas fa-user-times me-2"></span>
-                                Delete user
-                            </a>
+                    </td>
+                    <td>
+                        <a href="#" class="d-flex align-items-center">
+                            <img src="../assets/img/team/profile-picture-1.jpg" class="avatar rounded-circle me-3"
+                                alt="Avatar">
+                            <div class="d-block">
+                                <span class="fw-bold">{{ $user->first_name . " " . $user->last_name }}</span>
+                                <div class="small text-gray">{{ $user->email }}</div>
+                            </div>
+                        </a>
+                    </td>
+                    <td><span class="fw-normal">{{ $user->role->name }}</span></td>
+                    <td><span class="fw-normal d-flex align-items-center">{{ $user->created_at->format('d M Y') }}</span></td>
+                    <td><span class="fw-normal text-success">Active</span></td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                    </path>
+                                </svg>
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <span class="fas fa-user-shield me-2"></span>
+                                    View Details
+                                </a>
+                                <a class="dropdown-item text-danger d-flex align-items-center" href="#">
+                                    <span class="fas fa-user-times me-2"></span>
+                                    Delete user
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
