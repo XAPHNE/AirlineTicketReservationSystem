@@ -53,7 +53,7 @@
       <li class="nav-item {{ Request::segment(1) == 'profile' ? 'active' : '' }}">
         <a href="/profile" class="nav-link">
           <span class="sidebar-icon">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-user me-3"></i>
           </span>
           <span class="sidebar-text">Profile</span>
         </a>
@@ -61,7 +61,7 @@
       <li class="nav-item {{ Request::segment(1) == 'users' ? 'active' : '' }}">
         <a href="/users" class="nav-link">
             <span class="sidebar-icon">
-                <i class="fas fa-users"></i>
+                <i class="fas fa-users me-2"></i>
             </span>
             <span class="sidebar-text">User Management</span>
         </a>
@@ -82,19 +82,14 @@
         </span>
         <div class="multi-level collapse show" role="list" id="submenu-laravel" aria-expanded="false">
           <ul class="flex-column nav">
-            <li class="nav-item {{ Request::segment(1) == 'role-list' ? 'active' : '' }}">
-              <a href="/role-list" class="nav-link">
+            <li class="nav-item {{ Request::segment(2) == 'role-list' ? 'active' : '' }}">
+              <a href="{{route('roles')}}" class="nav-link">
                 <span class="sidebar-text">Role List</span>
               </a>
             </li>
-            <li class="nav-item {{ Request::segment(1) == 'role-add' ? 'active' : '' }}">
-              <a href="/role-add" class="nav-link">
-                <span class="sidebar-text">Role Add</span>
-              </a>
-            </li>
-            <li class="nav-item {{ Request::segment(1) == 'role-edit' ? 'active' : '' }}">
-              <a href="/role-edit" class="nav-link">
-                <span class="sidebar-text">Role Edit</span>
+            <li class="nav-item {{ Request::segment(2) == 'role-add' || Request::segment(2) == 'role-edit' ? 'active' : '' }}">
+              <a href="{{route('role.add')}}" class="nav-link">
+                <span class="sidebar-text">Role Add/Edit</span>
               </a>
             </li>
           </ul>
