@@ -17,9 +17,8 @@ class RoleEdit extends Component {
             abort(404); // Example: Redirect to a 404 error page.
         }
     }
-    public function render($id) {
-        $role = Role::find($id);
-        return view('livewire.role-edit', compact('role'));
+    public function render() {
+        return view('livewire.role-edit');
     }
     public function updateRole() {
         $this->validate([
