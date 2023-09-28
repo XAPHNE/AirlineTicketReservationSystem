@@ -7,13 +7,9 @@ use Livewire\Component;
 
 class RoleEdit extends Component {
     public $role;
-    public $name; // Remove the "role" prefix
-    public $description; // Remove the "role" prefix
-
-    protected $rules = [
-        'name' => 'required|unique:roles,name', // Validation rule for name
-        'description' => 'nullable', // Validation rule for description
-    ];
+    public $name;
+    public $description;
+    public $originalName;
 
     public function mount($id) {
         $this->role = Role::find($id);
@@ -24,6 +20,7 @@ class RoleEdit extends Component {
 
         $this->name = $this->role->name;
         $this->description = $this->role->description;
+        $this->originalName = $this->name;
     }
 
     public function render() {
@@ -31,8 +28,20 @@ class RoleEdit extends Component {
     }
 
     public function updateRole() {
-        $this->validate();
+        // Build dynamic validation rules
+        $rules = [
+            'description' => 'nullable',
+        ];
 
+        // Add unique rule for "name" if it's changed
+        if ($this->name !== $this->originalName) {
+            $rules['name'] = 'required|unique:roles,name,' . $this->role->id;
+        }
+
+        // Validate the input data
+        $this->validate($rules);
+
+        // Update the role
         $this->role->update([
             'name' => $this->name,
             'description' => $this->description,
@@ -41,3 +50,4 @@ class RoleEdit extends Component {
         session()->flash('message', 'Role updated successfully');
     }
 }
+

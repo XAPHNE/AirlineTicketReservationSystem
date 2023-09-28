@@ -94,10 +94,10 @@
                                         <span class="fas fa-user-shield me-2"></span>
                                         Edit role
                                     </a>
-                                    <a class="dropdown-item text-danger d-flex align-items-center" href="#">
+                                    <button type="button" class="dropdown-item text-danger d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" wire:click="confirmRoleDeletion({{ $role->id }})">
                                         <span class="fas fa-user-times me-2"></span>
                                         Delete role
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -105,5 +105,37 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Confirmation Modal -->
+        <div class="modal fade" wire:ignore.self id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this role?
+                    </div>
+                    <div class="modal-footer">
+                        <!-- Modify the "Delete" button to trigger Livewire deleteRole method -->
+                        <button type="button" id="deleteRole" class="btn btn-danger" data-bs-dismiss="modal" wire:click="deleteRole">Delete</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        document.getElementById('deleteRole').addEventListener('click', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('message') }}',
+                timer: 1500,
+            })
+        });
+    </script>
+@endpush

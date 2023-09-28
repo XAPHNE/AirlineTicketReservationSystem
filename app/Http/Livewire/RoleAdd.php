@@ -15,19 +15,15 @@ class RoleAdd extends Component {
     }
     public function createRole() {
         $this->validate([
-            'name' => 'required|unique:roles.name',
+            'name' => 'required|unique:roles,name',
             'description' => 'nullable',
         ]);
         Role::create([
             'name' => $this->name,
             'description' => $this->description,
         ]);
-        $this->name = '';
-        $this->description = '';
-        $this->emit('roleCreated');
-        // Capture and view the executed SQL queries
-        $queries = DB::getQueryLog();
-        Log::info($queries); // Log the queries (optional)
-        dd($queries); // Output the queries for debugging (optional)
+        session()->flash('message', 'Role added successfully');
+
+        $this->reset(['name', 'description']);
     }
 }

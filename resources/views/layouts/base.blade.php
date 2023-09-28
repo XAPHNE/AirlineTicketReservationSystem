@@ -132,7 +132,8 @@
     @endif
 
     {{ $slot }}
-<script src="{{url('/')}}vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    @stack('scripts')
+    <script src="{{url('/')}}vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 
 </html>

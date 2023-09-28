@@ -55,20 +55,25 @@
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-gray-800 mt-2 animate-up-2" id="successAlert">Update</button>
+                        <button type="submit" class="btn btn-gray-800 mt-2 animate-up-2" id="updateRole">Update</button>
                     </div>
                 </form>
             </div>
         </div>
-        <script>
-        document.getElementById('successAlert').addEventListener('click', function () {
+    </div>
+</div>
+
+@push('scripts')
+    <script>
+        document.getElementById('updateRole').addEventListener('click', function () {
+            console.log('Button clicked'); // Add this line
             Swal.fire({
                 icon: 'success',
-                title: 'Success alert',
-                text: 'You clicked the button!',
+                title: 'Success',
+                text: '{{ session('message') }}',
                 timer: 1500,
             })
         });
     </script>
-    </div>
-</div>
+@endpush
+

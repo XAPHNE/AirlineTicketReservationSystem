@@ -44,20 +44,32 @@
                     <div class="col-md-12 mb-3">
                         <div>
                             <label for="name">Name</label>
-                            <input wire:model="role.name" class="form-control" id="name" type="text" placeholder="Name" required>
+                            <input wire:model="name" class="form-control" id="name" type="text" placeholder="Name" required>
                         </div>
                     </div>
                     <div class="col-md-12 mb-3">
                         <div>
                             <label for="description">Description</label>
-                            <textarea wire:model="role.description" class="form-control " id="description" type="text" placeholder="Description" required></textarea>
+                            <textarea wire:model="description" class="form-control " id="description" type="text" placeholder="Description" required></textarea>
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-gray-800 mt-2 animate-up-2">Add</button>
+                        <button type="submit" class="btn btn-gray-800 mt-2 animate-up-2" id="roleAdd">Add</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        document.getElementById('roleAdd').addEventListener('click', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('message') }}',
+                timer: 1500,
+            })
+        });
+    </script>
+@endpush
